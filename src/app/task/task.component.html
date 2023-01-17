@@ -1,0 +1,9 @@
+<p (click)="onClick()" *ngIf="!isEditing; else editingBlock" [ngClass]="{'text-decoration-line-through':task.isDone}">
+    {{task.name}}
+</p>
+<ng-template #editingBlock>
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Add a new Task" [(ngModel)]="task.name">
+        <button class="btn btn-primary" type="button" id="button-addon2" (click)="updateTask()" [disabled]="task.name === ''"><i class="bi bi-plus"></i></button>
+      </div>
+</ng-template>

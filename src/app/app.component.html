@@ -5,10 +5,11 @@
     </div>
 
     <div class="">
-      <h5 class="text-center">Active Tasks</h5>
-      <ng-container *ngFor="let task of tasks">
+      <h5 class="text-center">Active Tasks2</h5>
+      <app-task *ngFor="let task of tasks" [task]="task"></app-task>
+      <!-- <ng-container *ngFor="let task of tasks">
         <p *ngIf="!task.isDone" [ngClass]="{'text-decoration-line-through':task.isDone}">{{task.name}}</p>
-      </ng-container>
+      </ng-container> -->
       <div class="input-group mb-3">
         <input type="text" class="form-control" placeholder="Add a new Task" aria-label="Recipient's username" aria-describedby="button-addon2" [(ngModel)]="newTask">
         <button class="btn btn-primary" type="button" id="button-addon2" (click)="addNewTask()" [disabled]="newTask === ''"><i class="bi bi-plus"></i></button>
