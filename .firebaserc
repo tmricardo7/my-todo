@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "my-todo-a4196"
+  },
+  "targets": {
+    "my-todo-a4196": {
+      "hosting": {
+        "my-todo": [
+          "my-todo-a4196"
+        ]
+      }
+    }
+  }
+}

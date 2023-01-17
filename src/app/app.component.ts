@@ -1,21 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { map } from 'rxjs/operators';
 import { Task } from 'src/models/task.model';
+import { TasksService } from './tasks.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'My Tasks';
   newTask: string;
-  tasks: Task[] = [
-    {name:"My Task #1", isDone :false},
-    {name:"My Task #2", isDone :true},
-  ];
+  tasks: Task[] = [];
+
+  constructor(private tasksService: TasksService) {}
+  ngOnInit(): void {
+    this.tasksService.tasks.subscribe(tasks => {
+      this.tasks = tasks;
+    });
+  }
 
   addNewTask(){
-    this.tasks.push({name:this.newTask, isDone :false});
+    this.tasksService.addTask(this.newTask);
     this.newTask = "";
   }
 }
